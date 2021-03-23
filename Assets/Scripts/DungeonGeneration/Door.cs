@@ -13,16 +13,16 @@ public class Door : MonoBehaviour
             switch (doorDirection)
             {
                 case 'N':
-                    collision.transform.parent.position += new Vector3(0, 6.7f, 0);
+                    collision.transform.parent.position += new Vector3(0, 7.7f, 0);
                     break;
                 case 'E':
-                    collision.transform.parent.position += new Vector3(7.6f, 0, 0);
+                    collision.transform.parent.position += new Vector3(6.7f, 0, 0);
                     break;
                 case 'S':
-                    collision.transform.parent.position += new Vector3(0, -6.7f, 0);
+                    collision.transform.parent.position += new Vector3(0, -7.7f, 0);
                     break;
                 case 'W':
-                    collision.transform.parent.position += new Vector3(-7.6f, 0, 0);
+                    collision.transform.parent.position += new Vector3(-6.7f, 0, 0);
                     break;
                 default:
                     Debug.LogError("Error: doorDirection char is not set to one of the four cardinal directions");

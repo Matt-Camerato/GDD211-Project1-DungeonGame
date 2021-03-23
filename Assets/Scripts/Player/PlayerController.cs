@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 
     private bool canMove = true; //<--this may be public in the future so other scripts can stop player movement
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (canMove)
         {

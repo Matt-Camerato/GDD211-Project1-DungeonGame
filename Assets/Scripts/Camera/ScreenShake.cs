@@ -21,7 +21,12 @@ public class ScreenShake : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.G))
         {
-            ShakeScreen(0.5f, 0.1f, 7);
+            ShakeScreen(0.4f, 0.08f, 7);
+        }
+
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            ShakeScreen(0.3f, 0.02f, 6);
         }
     }
 

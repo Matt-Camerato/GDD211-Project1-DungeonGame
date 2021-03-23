@@ -164,6 +164,7 @@ GameObject:
   - component: {fileID: 173392758}
   - component: {fileID: 173392761}
   - component: {fileID: 173392762}
+  - component: {fileID: 173392763}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -188,8 +189,8 @@ Camera:
   m_GameObject: {fileID: 173392757}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.066037714, g: 0.066037714, b: 0.066037714, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -202,12 +203,12 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.001
+  near clip plane: 0.01
   far clip plane: 1000
-  field of view: 60
-  orthographic: 1
-  orthographic size: 3
-  m_Depth: -1
+  field of view: 40
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -261,6 +262,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f916a5c5e4bc8b44fbb0ebb1635e921f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &173392763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173392757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &618804874
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,7 +318,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 618804874}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1691441933}
@@ -316,7 +348,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.05}
+  m_Size: {x: 0.15, y: 0.02}
   m_EdgeRadius: 0
 --- !u!1 &857060598
 GameObject:
@@ -399,6 +431,78 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &877433559
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 877433560}
+  - component: {fileID: 877433561}
+  m_Layer: 0
+  m_Name: Point Light 2D
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &877433560
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877433559}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1691441933}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &877433561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877433559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LightType: 3
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.65
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1
+  m_LightVolumeOpacity: 0
+  m_ApplyToSortingLayers: 00000000
+  m_LightCookieSprite: {fileID: 0}
+  m_UseNormalMap: 0
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_ShadowIntensity: 0
+  m_ShadowVolumeIntensity: 0
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 3.56
+  m_PointLightDistance: 3
+  m_PointLightQuality: 1
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
 --- !u!1 &1119171435
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,45 +576,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44248b790e60d7143b355affb5c932e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitRoomDimensions: {x: 16, y: 12}
+  unitRoomDimensions: {x: 11, y: 11}
   halfDungeonSize: {x: 5, y: 5}
   totalRooms: 20
   doorNRooms:
-  - {fileID: 6357645222536857198, guid: 7d8b541f18d271d4391f4b9c7a9e9ff0, type: 3}
-  - {fileID: 9121207616196490605, guid: b5cb91566bb8b294f91ddbd46724b3f0, type: 3}
-  - {fileID: 1674554331481349698, guid: aef02bd118ce4b242a9b3a77532b83d5, type: 3}
-  - {fileID: 6417454589049939051, guid: b9058d5b82ac43743822d87a96ea4034, type: 3}
-  - {fileID: 8376243354486971730, guid: 7212ac0b5944bd24aba6a84787300c66, type: 3}
-  - {fileID: 210456118986459025, guid: 8438ea5a3bdb8fb49bd62a8e69d88a94, type: 3}
-  - {fileID: 4746191058930031426, guid: e7e0f52ee1271b34098b5f4c6c5c3c8b, type: 3}
-  - {fileID: 4507385996786222576, guid: 012ac48c1182b554da598c7871150b99, type: 3}
+  - {fileID: 2463637383596800351, guid: 7d8b541f18d271d4391f4b9c7a9e9ff0, type: 3}
+  - {fileID: 6045251274602081861, guid: b5cb91566bb8b294f91ddbd46724b3f0, type: 3}
+  - {fileID: 3117360592343746702, guid: aef02bd118ce4b242a9b3a77532b83d5, type: 3}
+  - {fileID: 9009981024092416895, guid: b9058d5b82ac43743822d87a96ea4034, type: 3}
+  - {fileID: 3190671710145419368, guid: 7212ac0b5944bd24aba6a84787300c66, type: 3}
+  - {fileID: 8583054739465115448, guid: 8438ea5a3bdb8fb49bd62a8e69d88a94, type: 3}
+  - {fileID: 2104182577708539607, guid: e7e0f52ee1271b34098b5f4c6c5c3c8b, type: 3}
+  - {fileID: 1829846587265663706, guid: 012ac48c1182b554da598c7871150b99, type: 3}
   doorERooms:
-  - {fileID: 6357645222536857198, guid: 7d8b541f18d271d4391f4b9c7a9e9ff0, type: 3}
-  - {fileID: 3127028079827952864, guid: 786d55d851f5e4943b7922670e5c7002, type: 3}
-  - {fileID: 1674554331481349698, guid: aef02bd118ce4b242a9b3a77532b83d5, type: 3}
-  - {fileID: 5436542951970828860, guid: c30f50b15806e174fb277411bf09f405, type: 3}
-  - {fileID: 2263032693120375131, guid: d8679f02a25ce54429100eaf4f2bb683, type: 3}
-  - {fileID: 210456118986459025, guid: 8438ea5a3bdb8fb49bd62a8e69d88a94, type: 3}
-  - {fileID: 8250255474968636059, guid: 698256c1c9531b24283e53532fc52bc7, type: 3}
-  - {fileID: 4507385996786222576, guid: 012ac48c1182b554da598c7871150b99, type: 3}
+  - {fileID: 2463637383596800351, guid: 7d8b541f18d271d4391f4b9c7a9e9ff0, type: 3}
+  - {fileID: 5701029384851869470, guid: 5b5ba3105ea2d1141a0873ff9067a11e, type: 3}
+  - {fileID: 3117360592343746702, guid: aef02bd118ce4b242a9b3a77532b83d5, type: 3}
+  - {fileID: 8314714475015705017, guid: c30f50b15806e174fb277411bf09f405, type: 3}
+  - {fileID: 492514914066860267, guid: d8679f02a25ce54429100eaf4f2bb683, type: 3}
+  - {fileID: 8583054739465115448, guid: 8438ea5a3bdb8fb49bd62a8e69d88a94, type: 3}
+  - {fileID: 2175263302262327043, guid: 698256c1c9531b24283e53532fc52bc7, type: 3}
+  - {fileID: 1829846587265663706, guid: 012ac48c1182b554da598c7871150b99, type: 3}
   doorSRooms:
-  - {fileID: 6357645222536857198, guid: 7d8b541f18d271d4391f4b9c7a9e9ff0, type: 3}
-  - {fileID: 9121207616196490605, guid: b5cb91566bb8b294f91ddbd46724b3f0, type: 3}
-  - {fileID: 5436542951970828860, guid: c30f50b15806e174fb277411bf09f405, type: 3}
-  - {fileID: 1414140682867254240, guid: 78dd44eccaef3074fb15cae049d7305e, type: 3}
-  - {fileID: 8266090932338527782, guid: e96d7de0f7e8df24e9bdb495b82f5ac0, type: 3}
-  - {fileID: 210456118986459025, guid: 8438ea5a3bdb8fb49bd62a8e69d88a94, type: 3}
-  - {fileID: 8250255474968636059, guid: 698256c1c9531b24283e53532fc52bc7, type: 3}
-  - {fileID: 4746191058930031426, guid: e7e0f52ee1271b34098b5f4c6c5c3c8b, type: 3}
+  - {fileID: 2463637383596800351, guid: 7d8b541f18d271d4391f4b9c7a9e9ff0, type: 3}
+  - {fileID: 6045251274602081861, guid: b5cb91566bb8b294f91ddbd46724b3f0, type: 3}
+  - {fileID: 8314714475015705017, guid: c30f50b15806e174fb277411bf09f405, type: 3}
+  - {fileID: 3864751921275440100, guid: 78dd44eccaef3074fb15cae049d7305e, type: 3}
+  - {fileID: 8802901058546644285, guid: e96d7de0f7e8df24e9bdb495b82f5ac0, type: 3}
+  - {fileID: 8583054739465115448, guid: 8438ea5a3bdb8fb49bd62a8e69d88a94, type: 3}
+  - {fileID: 2175263302262327043, guid: 698256c1c9531b24283e53532fc52bc7, type: 3}
+  - {fileID: 2104182577708539607, guid: e7e0f52ee1271b34098b5f4c6c5c3c8b, type: 3}
   doorWRooms:
-  - {fileID: 6357645222536857198, guid: 7d8b541f18d271d4391f4b9c7a9e9ff0, type: 3}
-  - {fileID: 3127028079827952864, guid: 786d55d851f5e4943b7922670e5c7002, type: 3}
-  - {fileID: 1414140682867254240, guid: 78dd44eccaef3074fb15cae049d7305e, type: 3}
-  - {fileID: 6417454589049939051, guid: b9058d5b82ac43743822d87a96ea4034, type: 3}
-  - {fileID: 1831006988436697310, guid: 43bd9c588d383f047bdcc45c9c690ab1, type: 3}
-  - {fileID: 8250255474968636059, guid: 698256c1c9531b24283e53532fc52bc7, type: 3}
-  - {fileID: 4746191058930031426, guid: e7e0f52ee1271b34098b5f4c6c5c3c8b, type: 3}
-  - {fileID: 4507385996786222576, guid: 012ac48c1182b554da598c7871150b99, type: 3}
+  - {fileID: 2463637383596800351, guid: 7d8b541f18d271d4391f4b9c7a9e9ff0, type: 3}
+  - {fileID: 5701029384851869470, guid: 5b5ba3105ea2d1141a0873ff9067a11e, type: 3}
+  - {fileID: 3864751921275440100, guid: 78dd44eccaef3074fb15cae049d7305e, type: 3}
+  - {fileID: 9009981024092416895, guid: b9058d5b82ac43743822d87a96ea4034, type: 3}
+  - {fileID: 7445018711614991996, guid: 43bd9c588d383f047bdcc45c9c690ab1, type: 3}
+  - {fileID: 2175263302262327043, guid: 698256c1c9531b24283e53532fc52bc7, type: 3}
+  - {fileID: 2104182577708539607, guid: e7e0f52ee1271b34098b5f4c6c5c3c8b, type: 3}
+  - {fileID: 1829846587265663706, guid: 012ac48c1182b554da598c7871150b99, type: 3}
 --- !u!1 &1691441930
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,6 +680,7 @@ Transform:
   m_Children:
   - {fileID: 857060599}
   - {fileID: 618804875}
+  - {fileID: 877433560}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
