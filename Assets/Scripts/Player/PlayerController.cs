@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private GameObject HUD;
     [SerializeField] private GameObject keyLight;
     [SerializeField] private float moveSpeed;
 
@@ -12,7 +13,7 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
 
     private bool canMove = true; //<--this may be public in the future so other scripts can stop player movement
-
+    private int health = 100;
     public bool hasEscapeKey = false; //whether player has collected escape key drop and can open final escape door
 
     private void Start()
@@ -24,12 +25,17 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && canMove)
         {
             //when player attacks
-
             canMove = false;
             anim.SetTrigger("attack");
+        }
+
+        if(health <= 0)
+        {
+            canMove = false;
+            HUD.GetComponent<Animator>().SetTrigger("youDied");
         }
     }
 
