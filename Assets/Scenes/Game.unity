@@ -443,7 +443,7 @@ GameObject:
   - component: {fileID: 877433560}
   - component: {fileID: 877433561}
   m_Layer: 0
-  m_Name: Point Light 2D
+  m_Name: Player_AmbientLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -589,6 +589,8 @@ MonoBehaviour:
   - {fileID: 6786157555015529662, guid: 8438ea5a3bdb8fb49bd62a8e69d88a94, type: 3}
   - {fileID: 1138863657060554999, guid: e7e0f52ee1271b34098b5f4c6c5c3c8b, type: 3}
   - {fileID: 3722072379978983252, guid: 012ac48c1182b554da598c7871150b99, type: 3}
+  - {fileID: 1910058968794792470, guid: d884cf3bc7c9d7746a3429ad12762c27, type: 3}
+  - {fileID: 2624092414534658781, guid: cf80573bd31df9644b866ee4c55bd7c5, type: 3}
   doorERooms:
   - {fileID: 9023927178839836084, guid: 7d8b541f18d271d4391f4b9c7a9e9ff0, type: 3}
   - {fileID: 1821181462929533540, guid: 5b5ba3105ea2d1141a0873ff9067a11e, type: 3}
@@ -598,6 +600,8 @@ MonoBehaviour:
   - {fileID: 6786157555015529662, guid: 8438ea5a3bdb8fb49bd62a8e69d88a94, type: 3}
   - {fileID: 8580920986034625763, guid: 698256c1c9531b24283e53532fc52bc7, type: 3}
   - {fileID: 3722072379978983252, guid: 012ac48c1182b554da598c7871150b99, type: 3}
+  - {fileID: 7427504300912855659, guid: c238cb476e4758541a4fda5e278c2b52, type: 3}
+  - {fileID: 1297763835745305141, guid: e6ce9317ac0d1b94387d384c10445e67, type: 3}
   doorSRooms:
   - {fileID: 9023927178839836084, guid: 7d8b541f18d271d4391f4b9c7a9e9ff0, type: 3}
   - {fileID: 2695853744137120428, guid: b5cb91566bb8b294f91ddbd46724b3f0, type: 3}
@@ -607,6 +611,8 @@ MonoBehaviour:
   - {fileID: 6786157555015529662, guid: 8438ea5a3bdb8fb49bd62a8e69d88a94, type: 3}
   - {fileID: 8580920986034625763, guid: 698256c1c9531b24283e53532fc52bc7, type: 3}
   - {fileID: 1138863657060554999, guid: e7e0f52ee1271b34098b5f4c6c5c3c8b, type: 3}
+  - {fileID: 2748692170483823429, guid: 7219be73cdf93a34fb5b709ac982ead6, type: 3}
+  - {fileID: 4428100719005037590, guid: 795168b4fef41c642b162f206a6ea62e, type: 3}
   doorWRooms:
   - {fileID: 9023927178839836084, guid: 7d8b541f18d271d4391f4b9c7a9e9ff0, type: 3}
   - {fileID: 1821181462929533540, guid: 5b5ba3105ea2d1141a0873ff9067a11e, type: 3}
@@ -616,6 +622,90 @@ MonoBehaviour:
   - {fileID: 8580920986034625763, guid: 698256c1c9531b24283e53532fc52bc7, type: 3}
   - {fileID: 1138863657060554999, guid: e7e0f52ee1271b34098b5f4c6c5c3c8b, type: 3}
   - {fileID: 3722072379978983252, guid: 012ac48c1182b554da598c7871150b99, type: 3}
+  - {fileID: 5068318899330164299, guid: 5898a7088aa72084c980ae9f4cc51cd3, type: 3}
+  - {fileID: 6966077321076563044, guid: 1816b19c68e936246926d5d697d2b861, type: 3}
+  keyRooms:
+  - {fileID: 1910058968794792470, guid: d884cf3bc7c9d7746a3429ad12762c27, type: 3}
+  - {fileID: 7427504300912855659, guid: c238cb476e4758541a4fda5e278c2b52, type: 3}
+  - {fileID: 2748692170483823429, guid: 7219be73cdf93a34fb5b709ac982ead6, type: 3}
+  - {fileID: 5068318899330164299, guid: 5898a7088aa72084c980ae9f4cc51cd3, type: 3}
+  escapeRooms:
+  - {fileID: 2624092414534658781, guid: cf80573bd31df9644b866ee4c55bd7c5, type: 3}
+  - {fileID: 1297763835745305141, guid: e6ce9317ac0d1b94387d384c10445e67, type: 3}
+  - {fileID: 4428100719005037590, guid: 795168b4fef41c642b162f206a6ea62e, type: 3}
+  - {fileID: 6966077321076563044, guid: 1816b19c68e936246926d5d697d2b861, type: 3}
+--- !u!1 &1578447775
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1578447777}
+  - component: {fileID: 1578447776}
+  m_Layer: 0
+  m_Name: Player_KeyLight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1578447776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578447775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LightType: 3
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.7
+  m_Color: {r: 1, g: 0.9309917, b: 0, a: 1}
+  m_Intensity: 1.7
+  m_LightVolumeOpacity: 0
+  m_ApplyToSortingLayers: 00000000
+  m_LightCookieSprite: {fileID: 0}
+  m_UseNormalMap: 0
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_ShadowIntensity: 0
+  m_ShadowVolumeIntensity: 0
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0.3
+  m_PointLightOuterRadius: 2.35
+  m_PointLightDistance: 3
+  m_PointLightQuality: 1
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
+--- !u!4 &1578447777
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578447775}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1691441933}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1691441930
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,7 +737,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6567bd2cb5621146bab531b16e842ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyLight: {fileID: 1578447775}
   moveSpeed: 10
+  hasEscapeKey: 0
 --- !u!50 &1691441932
 Rigidbody2D:
   serializedVersion: 4
@@ -677,12 +769,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1691441930}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.871, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 857060599}
   - {fileID: 618804875}
   - {fileID: 877433560}
+  - {fileID: 1578447777}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

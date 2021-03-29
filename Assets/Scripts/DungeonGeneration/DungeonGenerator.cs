@@ -17,10 +17,17 @@ public class DungeonGenerator : MonoBehaviour
     [SerializeField] private List<GameObject> doorSRooms;
     [SerializeField] private List<GameObject> doorWRooms;
 
+    [Header("End Room Prefab Lists")]
+    [SerializeField] private List<GameObject> keyRooms;
+    [SerializeField] private List<GameObject> escapeRooms;
+
     private int halfDungeonSizeX, halfDungeonSizeY; //int versions of half dimensions of dungeon
 
     private Room[,] rooms; //2D array of rooms based on their coordinate position in dungeon
     private List<Vector2> takenPositions = new List<Vector2>(); //pretty much copy of room array but makes checking if room exists already in a given position a lot easier
+
+    private bool keyRoomSpawned = false;
+    private bool escapeRoomSpawned = false;
 
     private void Start()
     {
@@ -271,19 +278,36 @@ public class DungeonGenerator : MonoBehaviour
             roomPos.x *= unitRoomDimensions.x;
             roomPos.y *= unitRoomDimensions.y;
 
-            //get random room prefab from all possible rooms that has the given door configuration
-            GameObject currentRoomPrefab = GetRoomFromDoors(room.doorN, room.doorE, room.doorS, room.doorW);
+            int roomType = 0; //this variable determines if room will be normal or instead a key/escape room
+
+            //check if end room and whether key and escape rooms have spawned already
+            if (NumberOfNeighbors(room.coords, takenPositions) == 1)
+            {
+                if (Mathf.Abs(room.coords.x) >= halfDungeonSizeX - 2 || Mathf.Abs(room.coords.y) >= halfDungeonSizeY - 2) //make sure room isn't close to center of dungeon
+                {
+                    if (!keyRoomSpawned)
+                    {
+                        keyRoomSpawned = true;
+                        roomType = 1;
+                    }
+                    else if (!escapeRoomSpawned)
+                    {
+                        escapeRoomSpawned = true;
+                        roomType = 2;
+                    }
+                }
+            }
+
+            //get random room prefab from all possible rooms that has the given door configuration (and also is key/escape room if specified in roomType)
+            GameObject currentRoomPrefab = GetRoomFromDoors(room.doorN, room.doorE, room.doorS, room.doorW, roomType);
 
             //lastly, instantiate the prefab at its calculated location
             GameObject newRoom = Instantiate(currentRoomPrefab, roomPos, Quaternion.identity);
-
-            //JUST FOR TEST SPRITES: if spawn room, color test sprite green
-            //if (room.coords == Vector2.zero) { newRoom.GetComponent<SpriteRenderer>().color = Color.green; }
         }
     }
 
     //this method returns a randomly selected room prefab based on which doors it should and shouldn't have
-    private GameObject GetRoomFromDoors(bool doorN, bool doorE, bool doorS, bool doorW)
+    private GameObject GetRoomFromDoors(bool doorN, bool doorE, bool doorS, bool doorW, int roomType)
     {
         //first, create a list of possible rooms and initialize it with all the room prefabs from one of the four prefab lists (doorNRooms, doorERooms, doorSRooms, or doorWRooms)
         List<GameObject> possibleRooms;
@@ -292,7 +316,7 @@ public class DungeonGenerator : MonoBehaviour
         else if (doorS) { possibleRooms = new List<GameObject>(doorSRooms); }
         else { possibleRooms = new List<GameObject>(doorWRooms); }
 
-        //next, loop through a COPY of possibleRooms list and remove prefabs from ORIGINAL possibleRooms list that don't have correct doors
+        //next, loop through a COPY of possibleRooms list and remove prefabs from ORIGINAL possibleRooms list that don't have correct doors or room type
         List<GameObject> possibleRoomsCopy = new List<GameObject>(possibleRooms);
         foreach(GameObject room in possibleRoomsCopy)
         {
@@ -360,6 +384,32 @@ public class DungeonGenerator : MonoBehaviour
                 if (doorWRooms.Contains(room)) //if west door ISN't needed and room IS on list of doorWRooms, remove it from possible rooms and continue to check next room
                 {
                     possibleRooms.Remove(room);
+                    continue;
+                }
+            }
+
+            //check room type and get rid of rooms that don't match
+            if (roomType == 0)
+            {
+                if(keyRooms.Contains(room) || escapeRooms.Contains(room))
+                {
+                    possibleRooms.Remove(room); //remove special rooms if just a normal room
+                    continue;
+                }
+            }
+            else if(roomType == 1)
+            {
+                if (!keyRooms.Contains(room))
+                {
+                    possibleRooms.Remove(room); //if this is the key room, remove any rooms that aren't key rooms
+                    continue;
+                }
+            }
+            else if(roomType == 2)
+            {
+                if (!escapeRooms.Contains(room))
+                {
+                    possibleRooms.Remove(room); //if this is this escape room, remove any rooms that aren't escape rooms
                     continue;
                 }
             }
