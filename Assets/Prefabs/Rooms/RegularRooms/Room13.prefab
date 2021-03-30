@@ -1582,4 +1582,4 @@ MonoBehaviour:
   doorE: {fileID: 2841056630213071793}
   doorS: {fileID: 4849461094382570962}
   doorW: {fileID: 7644045590959877146}
-  roomCompleted: 0
+  roomCompleted: 1

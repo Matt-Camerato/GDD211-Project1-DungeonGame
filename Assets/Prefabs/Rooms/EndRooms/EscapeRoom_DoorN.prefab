@@ -46,8 +46,8 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.7
-  m_Color: {r: 1, g: 0.82689786, b: 0, a: 1}
-  m_Intensity: 2.66
+  m_Color: {r: 1, g: 0, b: 0.9910693, a: 1}
+  m_Intensity: 1.25
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 00000000
   m_LightCookieSprite: {fileID: 0}
@@ -1135,7 +1135,7 @@ Tilemap:
       - {fileID: 7911588060390425203, guid: ed773b376741f224496a475db4ad8313, type: 3}
       - {fileID: 5282480487156352949, guid: ed773b376741f224496a475db4ad8313, type: 3}
       - {fileID: -8640593202882695353, guid: ed773b376741f224496a475db4ad8313, type: 3}
-      m_AnimationSpeed: 10
+      m_AnimationSpeed: 10.000001
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:

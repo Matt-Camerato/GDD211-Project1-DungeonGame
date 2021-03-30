@@ -527,7 +527,7 @@ MonoBehaviour:
   doorE: {fileID: 0}
   doorS: {fileID: 0}
   doorW: {fileID: 7856822747818461534}
-  roomCompleted: 0
+  roomCompleted: 1
 --- !u!1 &2709887678386802216
 GameObject:
   m_ObjectHideFlags: 0

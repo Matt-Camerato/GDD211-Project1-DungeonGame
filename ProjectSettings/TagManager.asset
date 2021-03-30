@@ -7,6 +7,8 @@ TagManager:
   - Door
   - Key
   - Escape
+  - PlayerHitbox
+  - EnemyHitbox
   layers:
   - Default
   - TransparentFX

@@ -1,12 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private GameObject HUD;
+    [SerializeField] private Image healthBarFill;
     [SerializeField] private GameObject keyLight;
+
+
+    [Header("Player Settings")]
     [SerializeField] private float moveSpeed;
+    [SerializeField] private int attackDamage;
 
     private SpriteRenderer sr;
     private Rigidbody2D rb;
@@ -14,7 +20,10 @@ public class PlayerController : MonoBehaviour
 
     private bool canMove = true; //<--this may be public in the future so other scripts can stop player movement
     private int health = 100;
+
     public bool hasEscapeKey = false; //whether player has collected escape key drop and can open final escape door
+    public bool dead = false;
+    public bool won = false;
 
     private void Start()
     {
@@ -30,12 +39,45 @@ public class PlayerController : MonoBehaviour
             //when player attacks
             canMove = false;
             anim.SetTrigger("attack");
+
+            //first setup location of where hit check will occur
+            Vector3 hitCheckPos;
+            if (sr.flipX) { hitCheckPos = transform.position + new Vector3(0, 0.3f, 0); }
+            else { hitCheckPos = transform.position + new Vector3(0, -0.3f, 0); }
+
+            //next check for enemies at location and loop through them to damage each one
+            Collider2D[] hits = Physics2D.OverlapCircleAll(hitCheckPos, 0.5f);
+            foreach(Collider2D hit in hits)
+            {
+                if(hit.tag == "EnemyHitbox")
+                {
+                    hit.GetComponent<Enemy>().Damaged(attackDamage);
+
+                    ScreenShake.screenShakeInstance.ShakeScreen(0.3f, 0.05f, 7); //shake screen when enemy is hit
+                    var knockbackDir = transform.position - hit.transform.position;
+                    hit.transform.position -= knockbackDir.normalized * 0.3f;
+                }
+            }
         }
 
-        if(health <= 0)
+        healthBarFill.fillAmount = health / 100f;
+    }
+
+    public void Damaged(int damageAmount)
+    {
+        health -= damageAmount;
+        ScreenShake.screenShakeInstance.ShakeScreen(0.35f, 0.07f, 7); //shake screen when damage is taken
+
+        if (health <= 0)
         {
-            canMove = false;
+            health = 0;
+
             HUD.GetComponent<Animator>().SetTrigger("youDied");
+
+            dead = true;
+            canMove = false;
+
+            anim.SetBool("walking", false);
         }
     }
 
@@ -81,11 +123,25 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Key")
+        switch (collision.tag)
         {
-            Destroy(collision.gameObject); //delete key
-            keyLight.SetActive(true); //turn on key light for player
-            hasEscapeKey = true; //set bool since player has key now
+            case "Key":
+                Destroy(collision.gameObject); //delete key
+                keyLight.SetActive(true); //turn on key light for player
+                hasEscapeKey = true; //set bool since player has key now
+                break;
+            case "Escape":
+                if (hasEscapeKey)
+                {
+                    HUD.GetComponent<Animator>().SetTrigger("youWon");
+                    dead = true; //mark player as dead so enemies stop following
+                    canMove = false;
+                    won = true;
+                    anim.SetBool("walking", false);
+                }
+                break;
+            default:
+                break;
         }
     }
 }

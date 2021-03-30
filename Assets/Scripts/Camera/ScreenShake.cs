@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class ScreenShake : MonoBehaviour
 {
+    [SerializeField] private float customShakeTime;
+    [SerializeField] private float customShakePower;
+    [SerializeField] private float customRotationMultiplier;
+
     public static ScreenShake screenShakeInstance;
+
+    public float secondsLeft;
+
+    private float shakeCooldown = 1;
 
     private float shakeTime;
     private float shakeFadeTime;
@@ -27,6 +35,28 @@ public class ScreenShake : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.V))
         {
             ShakeScreen(0.3f, 0.02f, 6);
+        }
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            ShakeScreen(customShakeTime, customShakePower, customRotationMultiplier);
+        }
+
+        //this causes a shake check to occur every second which determines whether a screen shake will play (to represent dungeon collapsing)
+        if(shakeCooldown > 0)
+        {
+            shakeCooldown -= Time.deltaTime;
+        }
+        else
+        {
+            shakeCooldown = 1; //reset cooldown float
+
+            //this will cause a shake to occur 30% of the time at the beginning of the game, but after 10 minutes will increase to 60% of the time
+            var percentChanceToNot = 40 + (secondsLeft / 20); //this number descreases from 70 to 40 to show the percent chance that a shake WONT occur
+            if (Random.Range(0f, 100f) > percentChanceToNot) 
+            {
+                ShakeScreen(0.4f, (100f - percentChanceToNot) / 1000f, 7f); //trigger shake with custom settings based on time elapsed
+            }
         }
     }
 

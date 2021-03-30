@@ -12,15 +12,6 @@ public class HUD : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    private void Update()
-    {
-
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            anim.SetTrigger("youWon");
-        }
-    }
-
     public void PlayAgain() => anim.SetTrigger("playAgain");
     public void MainMenu() => anim.SetTrigger("mainMenu");
 
