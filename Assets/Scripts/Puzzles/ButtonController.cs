@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
 
 public class ButtonController : MonoBehaviour
@@ -9,7 +8,7 @@ public class ButtonController : MonoBehaviour
     private SpriteRenderer thisButton;
     public Sprite buttonIn;
     public Sprite buttonOut;
-    // Start is called before the first frame update
+    
     void Start()
     {
         depressed = false;

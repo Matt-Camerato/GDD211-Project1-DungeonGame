@@ -12,11 +12,15 @@ public class Enemy : MonoBehaviour
     public int attackDamage;
     public float moveSpeed;
 
+    public float agroDelay; //this is used so the enemy takes a short amount of time to realize the player is in range before going after them
+
     private void Start()
     {
         player = GameObject.Find("Player").transform;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+
+        agroDelay = Random.Range(1f, 2f); //enemies will wait 1-2 seconds after seeing the player in range before following them
     }
 
     public virtual void Update()
@@ -33,11 +37,22 @@ public class Enemy : MonoBehaviour
             transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = false;
         }
 
-        if(!GetComponent<BoxCollider2D>().IsTouching(player.GetChild(2).GetComponent<BoxCollider2D>()) && Vector3.Distance(transform.position, player.position) < 6 && !player.GetComponent<PlayerController>().dead)
+        if(!player.GetComponent<PlayerController>().dead && !GetComponent<BoxCollider2D>().IsTouching(player.GetChild(2).GetComponent<BoxCollider2D>()) && Vector3.Distance(transform.position, player.position) < 6)
         {
-            //if player isn't dead and enemy isn't touching player, but player is in range of enemy, move towards player by setting walking bool
+            //if player isn't dead and enemy isn't touching player, but player is in range of enemy, check agroDelay and then move towards player by setting walking bool
 
-            anim.SetBool("walking", true);
+            if(agroDelay <= 0)
+            {
+                //if agroDelay has expired, just walk towards player
+                agroDelay = 0;
+                anim.SetBool("walking", true);
+            }
+            else
+            {
+                //else decrease agroDelay
+                agroDelay -= Time.deltaTime;
+            }
+                
         }
         else
         {

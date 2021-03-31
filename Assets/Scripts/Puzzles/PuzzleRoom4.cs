@@ -22,7 +22,6 @@ public class PuzzleRoom4 : MonoBehaviour
         if (pp.getState() == true && lever.getState() == true && button.getState() == true)
         {
             rm.completeRoom();
-            Debug.Log("room4");
         }
         else if (pp.getState() == false)
         {

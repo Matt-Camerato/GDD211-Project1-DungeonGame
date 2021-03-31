@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
 
 public class LeverController : MonoBehaviour
@@ -9,7 +8,7 @@ public class LeverController : MonoBehaviour
     private SpriteRenderer thisLever;
     public Sprite LeverUp;
     public Sprite LeverDown;
-    // Start is called before the first frame update
+    
     void Start()
     {
         leverUp = false;
