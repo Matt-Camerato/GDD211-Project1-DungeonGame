@@ -60,4 +60,9 @@ public class RoomManager : MonoBehaviour
             }
         }
     }
+
+    public void completeRoom()
+    {
+        roomCompleted = true;
+    }
 }

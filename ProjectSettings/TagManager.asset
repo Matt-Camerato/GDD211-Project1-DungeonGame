@@ -9,6 +9,8 @@ TagManager:
   - Escape
   - PlayerHitbox
   - EnemyHitbox
+  - Plate
+  - PlayerCharacter
   layers:
   - Default
   - TransparentFX
