@@ -109,8 +109,9 @@ MonoBehaviour:
   anim: {fileID: 0}
   rb: {fileID: 0}
   health: 75
-  attackDamage: 10
+  attackDamage: 5
   moveSpeed: 2.5
+  agroDelay: 0
 --- !u!61 &7051693776667172276
 BoxCollider2D:
   m_ObjectHideFlags: 0

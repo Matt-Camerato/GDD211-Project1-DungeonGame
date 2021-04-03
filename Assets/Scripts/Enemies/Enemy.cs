@@ -14,6 +14,9 @@ public class Enemy : MonoBehaviour
 
     public float agroDelay; //this is used so the enemy takes a short amount of time to realize the player is in range before going after them
 
+    public bool knockedBack = false;
+    private float knockbackTimer = 0.1f;
+
     private void Start()
     {
         player = GameObject.Find("Player").transform;
@@ -58,16 +61,32 @@ public class Enemy : MonoBehaviour
         {
             anim.SetBool("walking", false);
         }
+
+        if (knockedBack)
+        {
+            knockbackTimer -= Time.deltaTime;
+
+            if (knockbackTimer <= 0)
+            {
+                knockbackTimer = 0.1f;
+                knockedBack = false;
+            }
+        }
     }
 
     private void FixedUpdate()
     {
-        rb.velocity = Vector2.zero; //reset velocity so enemy doesn't slide around
-
         if (anim.GetBool("walking"))
         {
-            Vector3 moveDir = (player.position - transform.position).normalized;
-            rb.velocity = moveDir * moveSpeed * 10 * Time.deltaTime;
+            if (!knockedBack)
+            {
+                Vector3 moveDir = (player.position - transform.position).normalized;
+                rb.velocity = moveDir * moveSpeed * 10 * Time.deltaTime;
+            }
+        }
+        else
+        {
+            rb.velocity = Vector2.MoveTowards(rb.velocity, Vector2.zero, Time.deltaTime * 4);
         }
     }
 
@@ -83,7 +102,8 @@ public class Enemy : MonoBehaviour
     {
         player.GetComponent<PlayerController>().Damaged(attackDamage); //damage player based on attack damage
         var knockbackDir = transform.position - player.transform.position;
-        player.transform.position -= knockbackDir.normalized * 0.3f;
+        player.GetComponent<Rigidbody2D>().AddForce(-knockbackDir.normalized * 150);
+        player.GetComponent<PlayerController>().knockedBack = true;
     }
 
     public virtual void Damaged(int damageAmount)

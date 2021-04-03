@@ -133,8 +133,11 @@ MonoBehaviour:
   anim: {fileID: 0}
   rb: {fileID: 0}
   health: 10
-  attackDamage: 40
-  moveSpeed: 5
+  attackDamage: 25
+  moveSpeed: 4
+  agroDelay: 0
+  knockedBack: 0
+  knockbackTimer: -1.25
 --- !u!61 &4586304369367436352
 BoxCollider2D:
   m_ObjectHideFlags: 0

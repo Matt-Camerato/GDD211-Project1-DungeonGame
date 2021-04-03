@@ -422,7 +422,6 @@ GameObject:
   m_Component:
   - component: {fileID: 114324390486443062}
   - component: {fileID: 8086906862819594266}
-  - component: {fileID: 114324390486443050}
   m_Layer: 0
   m_Name: Room9 1
   m_TagString: Untagged
@@ -470,26 +469,6 @@ MonoBehaviour:
   doorS: {fileID: 0}
   doorW: {fileID: 0}
   roomCompleted: 0
---- !u!114 &114324390486443050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 114324390486443061}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b743ffa6b73f184292dbfb3c954391d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rm: {fileID: 0}
-  b1: {fileID: 0}
-  b2: {fileID: 0}
-  b3: {fileID: 0}
-  b4: {fileID: 0}
-  b5: {fileID: 0}
-  b6: {fileID: 0}
-  b7: {fileID: 0}
 --- !u!1 &114324390758512252
 GameObject:
   m_ObjectHideFlags: 0

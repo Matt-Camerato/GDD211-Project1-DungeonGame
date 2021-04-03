@@ -25,6 +25,9 @@ public class PlayerController : MonoBehaviour
     public bool dead = false;
     public bool won = false;
 
+    public bool knockedBack = false;
+    private float knockbackTimer = 0.1f;
+
     private void Start()
     {
         sr = transform.GetChild(0).GetComponent<SpriteRenderer>();
@@ -42,11 +45,11 @@ public class PlayerController : MonoBehaviour
 
             //first setup location of where hit check will occur
             Vector3 hitCheckPos;
-            if (sr.flipX) { hitCheckPos = transform.position + new Vector3(0, 0.3f, 0); }
-            else { hitCheckPos = transform.position + new Vector3(0, -0.3f, 0); }
+            if (sr.flipX) { hitCheckPos = transform.position + new Vector3(0.3f, 0, 0); }
+            else { hitCheckPos = transform.position + new Vector3(-0.3f, 0, 0); }
 
             //next check for enemies at location and loop through them to damage each one
-            Collider2D[] hits = Physics2D.OverlapCircleAll(hitCheckPos, 0.5f);
+            Collider2D[] hits = Physics2D.OverlapCircleAll(hitCheckPos, 0.2f);
             foreach(Collider2D hit in hits)
             {
                 if(hit.tag == "EnemyHitbox")
@@ -55,12 +58,25 @@ public class PlayerController : MonoBehaviour
 
                     ScreenShake.screenShakeInstance.ShakeScreen(0.3f, 0.05f, 7); //shake screen when enemy is hit
                     var knockbackDir = transform.position - hit.transform.position;
-                    hit.transform.position -= knockbackDir.normalized * 0.3f;
+
+                    hit.GetComponent<Rigidbody2D>().AddForce(-knockbackDir.normalized * 150);
+                    hit.GetComponent<Enemy>().knockedBack = true;
                 }
             }
         }
 
         healthBarFill.fillAmount = health / 100f;
+
+        if (knockedBack)
+        {
+            knockbackTimer -= Time.deltaTime;
+
+            if (knockbackTimer <= 0)
+            {
+                knockbackTimer = 0.1f;
+                knockedBack = false;
+            }
+        }
     }
 
     public void Damaged(int damageAmount)
@@ -84,12 +100,15 @@ public class PlayerController : MonoBehaviour
     //this is animation event for letting player move after attacking
     private void DoneAttacking()
     {
-        canMove = true;
+        if (!dead)
+        {
+            canMove = true;
+        }
     }
 
     private void FixedUpdate()
     {
-        rb.velocity = Vector2.zero; //reset velocity so player doesn't slide around
+        //rb.velocity = Vector2.zero; //reset velocity so player doesn't slide around
 
         if (canMove)
         {
@@ -101,7 +120,11 @@ public class PlayerController : MonoBehaviour
                 //player is moving
 
                 anim.SetBool("walking", true);
-                rb.velocity = new Vector2(moveX, moveY);
+
+                if (!knockedBack)
+                {
+                    rb.velocity = new Vector2(moveX, moveY);
+                }
 
                 if(moveX > 0)
                 {
@@ -117,7 +140,12 @@ public class PlayerController : MonoBehaviour
                 //player isn't moving
 
                 anim.SetBool("walking", false);
+                rb.velocity = Vector2.MoveTowards(rb.velocity, Vector2.zero, Time.deltaTime * 4);
             }
+        }
+        else
+        {
+            rb.velocity = Vector2.zero;
         }
     }
 

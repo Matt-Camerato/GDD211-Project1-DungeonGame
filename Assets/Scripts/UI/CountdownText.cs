@@ -18,7 +18,7 @@ public class CountdownText : MonoBehaviour
 
     private void Update()
     {
-        if (!player.won)
+        if (!player.won && !player.dead)
         {
             if (secondsLeft > 0)
             {
