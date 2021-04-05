@@ -40,6 +40,8 @@ public class LeverController : MonoBehaviour
             {
                 leverUp = true;
             }
+
+            SoundEffectManager.instance.LeverSFX();
         }
     }
 

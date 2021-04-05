@@ -132,12 +132,13 @@ MonoBehaviour:
   player: {fileID: 0}
   anim: {fileID: 0}
   rb: {fileID: 0}
+  DeathParticles: {fileID: 3164641904345009516, guid: ceeff79b7ba56964d9cd611c6b2a62ab,
+    type: 3}
   health: 10
   attackDamage: 25
   moveSpeed: 4
   agroDelay: 0
   knockedBack: 0
-  knockbackTimer: -1.25
 --- !u!61 &4586304369367436352
 BoxCollider2D:
   m_ObjectHideFlags: 0

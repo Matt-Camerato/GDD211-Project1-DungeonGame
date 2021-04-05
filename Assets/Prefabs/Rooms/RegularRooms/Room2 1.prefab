@@ -592,6 +592,8 @@ GameObject:
   - component: {fileID: 3046658464776004673}
   - component: {fileID: 3046658464776004679}
   - component: {fileID: 3046658464776004672}
+  - component: {fileID: 3471422904194155479}
+  - component: {fileID: 3980347267414910914}
   m_Layer: 0
   m_Name: GroundSymbolLightFlicker
   m_TagString: Untagged
@@ -672,6 +674,34 @@ MonoBehaviour:
   maxIntensity: 1.5
   minSpeed: 1
   maxSpeed: 1
+--- !u!58 &3471422904194155479
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3046658464776004674}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.2
+--- !u!114 &3980347267414910914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3046658464776004674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7e99427d59705840a1e724022cbae32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5252857256540251903
 GameObject:
   m_ObjectHideFlags: 0
@@ -1715,12 +1745,12 @@ PrefabInstance:
     - target: {fileID: 5989177072788515681, guid: d54da5a655ec96a4585cdbfdabcf5963,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.2815273
+      value: 0.81
       objectReference: {fileID: 0}
     - target: {fileID: 5989177072788515681, guid: d54da5a655ec96a4585cdbfdabcf5963,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.0671239
+      value: 1.48
       objectReference: {fileID: 0}
     - target: {fileID: 5989177072788515681, guid: d54da5a655ec96a4585cdbfdabcf5963,
         type: 3}
@@ -1785,12 +1815,12 @@ PrefabInstance:
     - target: {fileID: 965073749426223765, guid: 22e177198a93afd488747a054671a25f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.0644445
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 965073749426223765, guid: 22e177198a93afd488747a054671a25f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.2277565
+      value: -0.78
       objectReference: {fileID: 0}
     - target: {fileID: 965073749426223765, guid: 22e177198a93afd488747a054671a25f,
         type: 3}
@@ -1865,12 +1895,12 @@ PrefabInstance:
     - target: {fileID: 5989177072788515681, guid: d54da5a655ec96a4585cdbfdabcf5963,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.8093252
+      value: -0.73
       objectReference: {fileID: 0}
     - target: {fileID: 5989177072788515681, guid: d54da5a655ec96a4585cdbfdabcf5963,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.2380939
+      value: -1.62
       objectReference: {fileID: 0}
     - target: {fileID: 5989177072788515681, guid: d54da5a655ec96a4585cdbfdabcf5963,
         type: 3}

@@ -9,5 +9,6 @@ public class Thral : Enemy
         base.Attack(player);
 
         Destroy(gameObject); //Thral enemy dies upon attacking
+        SoundEffectManager.instance.EnemyKilledSFX();
     }
 }

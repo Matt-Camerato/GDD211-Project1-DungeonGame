@@ -43,6 +43,8 @@ public class RoomManager : MonoBehaviour
                 UnlockConnectedDoor("DoorE", Vector2.left); //find connected east door and unlock it too
             }
 
+            SoundEffectManager.instance.DoorsOpenSFX();
+
             doorsUnlocked = true;
         }
     }

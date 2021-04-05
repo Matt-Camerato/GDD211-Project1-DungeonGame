@@ -30,6 +30,8 @@ public class PressurePlate : MonoBehaviour
             thisPlate = collision.gameObject.GetComponent<SpriteRenderer>();
             depressed = true;
             GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+
+            SoundEffectManager.instance.PressurePlateSFX();
         }
     }
 

@@ -40,6 +40,8 @@ public class ButtonController : MonoBehaviour
             {
                 depressed = true;
             }
+
+            SoundEffectManager.instance.ButtonSFX();
         }
     }
 

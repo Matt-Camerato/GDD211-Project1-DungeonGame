@@ -8,6 +8,9 @@ public class Enemy : MonoBehaviour
     public Animator anim;
     public Rigidbody2D rb;
 
+    public GameObject DeathParticles;
+    public ParticleSystem damageParticles;
+
     public int health;
     public int attackDamage;
     public float moveSpeed;
@@ -15,7 +18,7 @@ public class Enemy : MonoBehaviour
     public float agroDelay; //this is used so the enemy takes a short amount of time to realize the player is in range before going after them
 
     public bool knockedBack = false;
-    private float knockbackTimer = 0.1f;
+    public float knockbackTimer = 0.1f;
 
     private void Start()
     {
@@ -112,7 +115,14 @@ public class Enemy : MonoBehaviour
 
         if(health <= 0)
         {
+            SoundEffectManager.instance.EnemyKilledSFX();
+            Instantiate(DeathParticles, transform.position, Quaternion.identity);
             Destroy(gameObject);
+        }
+        else
+        {
+            SoundEffectManager.instance.DamageSFX();
+            damageParticles.Play();
         }
     }
 }

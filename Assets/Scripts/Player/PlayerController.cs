@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject HUD;
     [SerializeField] private Image healthBarFill;
     [SerializeField] private GameObject keyLight;
-
+    [SerializeField] private ParticleSystem damageParticles;
 
     [Header("Player Settings")]
     [SerializeField] private float moveSpeed;
@@ -18,8 +18,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
 
-    private bool canMove = true; //<--this may be public in the future so other scripts can stop player movement
-    private int health = 100;
+    private bool canMove = true;
+    public int health = 100;
 
     public bool hasEscapeKey = false; //whether player has collected escape key drop and can open final escape door
     public bool dead = false;
@@ -94,6 +94,13 @@ public class PlayerController : MonoBehaviour
             canMove = false;
 
             anim.SetBool("walking", false);
+            anim.SetTrigger("dead");
+            SoundEffectManager.instance.PlayerDeathSFX();
+        }
+        else
+        {
+            SoundEffectManager.instance.DamageSFX();
+            damageParticles.Play();
         }
     }
 
@@ -157,6 +164,7 @@ public class PlayerController : MonoBehaviour
                 Destroy(collision.gameObject); //delete key
                 keyLight.SetActive(true); //turn on key light for player
                 hasEscapeKey = true; //set bool since player has key now
+                SoundEffectManager.instance.KeyCollectSFX();
                 break;
             case "Escape":
                 if (hasEscapeKey)
@@ -166,6 +174,7 @@ public class PlayerController : MonoBehaviour
                     canMove = false;
                     won = true;
                     anim.SetBool("walking", false);
+                    SoundEffectManager.instance.WinSFX();
                 }
                 break;
             default:
